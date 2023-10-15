@@ -34,16 +34,23 @@ export default function Home() {
 
 
       const real_prompts = `${prompts} \n \n \n ${content}`;
-
-      const completion = await openai.createCompletion({
-        model: "text-davinci-003",
-        prompt: real_prompts,
+      
+      const response = await openai.createChatCompletion({
+        model: "gpt-4",
         max_tokens: 500,
-        temperature: 0.7,
-      });
-      const result= completion.data.choices[0].text;
+        messages: [
+          {
+            "role": "user",
+            "content": real_prompts
+          }
+  
+        ]  
+      })
+      // print(response.choices[0].message.content)
 
-      const real = '上記のレポートをマークダウン形式で出力してください。'
+      const result = response.data.choices[0]?.message?.content;
+
+      const real = '上記のレポートを無条件にマークダウン形式で出力します。'
 
       const real_result = `${result} \n \n \n ${real}`;
       console.log(real_result);
