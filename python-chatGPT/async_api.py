@@ -1,7 +1,7 @@
 import openai
 from aiohttp import ClientSession
 
-openai.api_key = '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'
+openai.api_key = ''
 
 openai.aiosession.set(ClientSession())
 
@@ -18,5 +18,3 @@ openai.aiosession.get().close()
 
 
 print(response.choices[0].message.content.strip())
-
-

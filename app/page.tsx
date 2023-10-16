@@ -38,6 +38,7 @@ export default function Home() {
                       3. 一言でプロンプトをGPTに利用して、再び上記のマークダウン内容とほぼ同様のマークダウン内容が得られるようにすることです。';
 
 
+                      
       const real_prompts = `${prompts} \n \n \n ${content}`;
       
       const response = await openai.createChatCompletion({
