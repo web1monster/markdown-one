@@ -30,14 +30,8 @@ export default function Home() {
         apiKey: process.env.NEXT_PUBLIC_API_KEY
       });
       const openai = new OpenAIApi(configuration);
-      const content = '上記のマークダウン内容を詳細に正確に分析してください。\
-                      次に、GPT用のプロンプトを作成する必要があります。\
-                      どんなプロンプトですか？\
-                      1.もし私がこのプロンプトをGPTに入れたら、結果の値に上記のマークダウン内容が反映されるようにプロンプトを生成します。\
-                      2. マークダウン内容が正確に反映されるようにします。\
-                      3. 一言でプロンプトをGPTに利用して、再び上記のマークダウン内容とほぼ同様のマークダウン内容が得られるようにすることです。\
-                      4.マークダウンの内容を失わないように、マークダウン内容を完全に反映するようにプロンプトを作成する必要があります。';
-      const real_prompts = `${prompts} \n \n \n ${content}`;
+      const content = '上記のマークダウン内容を分析し、CHATGPTの結果として上記のマークダウン内容とまったく同じマークダウン内容を得るようにプロンプトを作成します。';
+      const real_prompts = `markdown content: ${prompts} \n \n \n prompts: ${content}`;
       
       const response = await openai.createChatCompletion({
         model: "gpt-4",
@@ -57,7 +51,7 @@ export default function Home() {
       const real = '上記の結果をすべてまとめて、その内容を詳細に含むプログラムコードで利用できるマークダウンソースコードを出力してください。\
                     マークダウンソースコードにはさまざまなマークダウンスタイルが適用されなければなりません。'
 
-      const real_result = `${result} \n \n \n ${real}`;
+      const real_result = `${result} \n \n \n \n${real}`;
       console.log(real_result);
 
       setChatGPTResponse(real_result);
