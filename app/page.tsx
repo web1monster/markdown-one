@@ -36,9 +36,6 @@ export default function Home() {
                       1.もし私がこのプロンプトをGPTに入れたら、結果の値に上記のマークダウン内容が反映されるようにプロンプトを生成します。\
                       2. マークダウン内容が正確に反映されるようにします。\
                       3. 一言でプロンプトをGPTに利用して、再び上記のマークダウン内容とほぼ同様のマークダウン内容が得られるようにすることです。';
-
-
-                      
       const real_prompts = `${prompts} \n \n \n ${content}`;
       
       const response = await openai.createChatCompletion({
