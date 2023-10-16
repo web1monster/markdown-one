@@ -30,7 +30,12 @@ export default function Home() {
         apiKey: process.env.NEXT_PUBLIC_API_KEY
       });
       const openai = new OpenAIApi(configuration);
-      const content = '上記のマークダウン コンテンツを分析し、マークダウン コンテンツに関するプロンプトを作成してください。このプロンプトをリクエストとして送信すると、マークダウン コンテンツが結果の応答に反映されます。';
+      const content = '上記のマークダウン内容を詳細に正確に分析してください。\
+                      次に、GPT用のプロンプトを作成する必要があります。\
+                      どんなプロンプトですか？\
+                      1.もし私がこのプロンプトをGPTに入れたら、結果の値に上記のマークダウン内容が反映されるようにプロンプトを生成します。\
+                      2. マークダウン内容が正確に反映されるようにします。\
+                      3. 一言でプロンプトをGPTに利用して、再び上記のマークダウン内容とほぼ同様のマークダウン内容が得られるようにすることです。';
 
 
       const real_prompts = `${prompts} \n \n \n ${content}`;
