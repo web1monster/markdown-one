@@ -35,7 +35,8 @@ export default function Home() {
                       どんなプロンプトですか？\
                       1.もし私がこのプロンプトをGPTに入れたら、結果の値に上記のマークダウン内容が反映されるようにプロンプトを生成します。\
                       2. マークダウン内容が正確に反映されるようにします。\
-                      3. 一言でプロンプトをGPTに利用して、再び上記のマークダウン内容とほぼ同様のマークダウン内容が得られるようにすることです。';
+                      3. 一言でプロンプトをGPTに利用して、再び上記のマークダウン内容とほぼ同様のマークダウン内容が得られるようにすることです。\
+                      4.マークダウンの内容を失わないように、マークダウン内容を完全に反映するようにプロンプトを作成する必要があります。';
       const real_prompts = `${prompts} \n \n \n ${content}`;
       
       const response = await openai.createChatCompletion({
@@ -53,7 +54,8 @@ export default function Home() {
 
       const result = response.data.choices[0]?.message?.content;
 
-      const real = '上記のレポートを無条件にマークダウン形式で出力します。'
+      const real = '上記の結果をすべてまとめて、その内容を詳細に含むプログラムコードで利用できるマークダウンソースコードを出力してください。\
+                    マークダウンソースコードにはさまざまなマークダウンスタイルが適用されなければなりません。'
 
       const real_result = `${result} \n \n \n ${real}`;
       console.log(real_result);
