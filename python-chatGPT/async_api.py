@@ -17,4 +17,8 @@ response = openai.ChatCompletion.acreate(
 openai.aiosession.get().close()
 
 
+<<<<<<< HEAD
 print(response.choices[0].message.content.strip())
+=======
+print(response.choices[0].message.content.strip())
+>>>>>>> a9059558b5a41a4f2516ec91931b2b2679d3c7db
